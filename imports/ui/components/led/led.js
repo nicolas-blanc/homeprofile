@@ -17,7 +17,7 @@ class Led {
     console.log("It worked:", this.isOn);
     }
     this.currentUser=function() {
-      return Meteor.user();
+      return Meteor.user() != null;
     }
 
     this.helpers({
@@ -32,7 +32,7 @@ class Led {
     //Leds.update(this.led._id);
     this.show();
   }
-
+  
   reset() {
     this.led = {};
   }
@@ -49,4 +49,8 @@ export default angular.module(name, [
   template,
   controllerAs: name,
   controller: Led
+});
+
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY',
 });

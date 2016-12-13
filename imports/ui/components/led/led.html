@@ -1,8 +1,10 @@
 <login-buttons></login-buttons>
-<h1>House lights:</h1>
-<ul>
+<h1>House lights: <input ng-model ="collapse" type = checkbox></h1>
+<div ng-show="collapse">
+<ul ng-show="led.currentUser()">
   <li ng-repeat="led in led.leds">
-    {{led.name}}{{led.currentUser()}}
+    <b>{{led.name}}</b> <label class ="labelLastUser">Last User: {{led.lastUser}}</label>  
     <led-indicator led="led"></led-indicator>
   </li>
 </ul>
+</div>

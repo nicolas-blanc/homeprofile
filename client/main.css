@@ -1,0 +1,21 @@
+li{
+    display:table;
+    margin:0px auto 0px auto;
+}
+body{
+    display:table;
+    margin:0px auto 0px auto;
+}
+
+.powerlabel{
+	background-color: #f9f690;
+}
+
+.labelLastUser{
+	display: inline-block; 
+	width: 200px;
+}
+
+input[type=number]{
+    width: 40px;
+} 
