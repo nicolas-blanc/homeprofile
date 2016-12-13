@@ -1,3 +1,7 @@
 <img ng-if="!ledIndicator.imgsrc()" src="images/offbulb.jpeg" alt="OffLight" style="width:35px;height:45px;" ng-click="ledIndicator.toggle()">
 <img ng-if="ledIndicator.imgsrc()" src="images/onbulb.jpeg" alt="OnLight" style="width:35px;height:45px;" ng-click="ledIndicator.toggle()">
-<form><label class = "powerlabel">Power: {{ledIndicator.myPower()}}</label>  <input type="number" maxlength="4" size="4" ng-model="ledIndicator.ledpower" /><button ng-click="ledIndicator.updatePower()">Change Power!</button></form>
+<form>
+	<label class = "powerlabel">Power: {{ledIndicator.myPower()}}</label>  
+	<input type="number" maxlength="4" size="4" ng-model="ledIndicator.ledpower" />
+	<button ng-click="ledIndicator.updatePower()">Change Power!</button>
+</form>

@@ -4,8 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './led.html';
 import { Leds } from '../../../api/leds';
 import { name as LedIndicator} from './ledIndicator';
-import { name as PartyRemove } from '../partyRemove/partyRemove';
-import { name as PartyAdd } from '../partyAdd/partyAdd';
+import { name as Tracks} from '../audio/tracks';
 
 class Led {
   constructor($scope, $reactive) {
@@ -44,6 +43,7 @@ const name = 'led';
 export default angular.module(name, [
   angularMeteor,
   LedIndicator,
+  Tracks,
   'accounts.ui'
 ]).component(name, {
   template,

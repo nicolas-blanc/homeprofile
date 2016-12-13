@@ -24,7 +24,7 @@ class LedIndicator {
     this.led.isOn = !this.led.isOn;
     //Leds.update({_id:this.led._id},{"name": this.led.name,"isOn": this.led.isOn});
     var id = Meteor.user()._id+this.led._id;
-    var pow = LedsStats.findOne({_id:id}).Power
+    var pow = LedsStats.findOne({_id:id}).Power;
     Leds.update({_id:this.led._id},{$set:{name: this.led.name,isOn: this.led.isOn,lastUser: Meteor.user().username,Power:pow}});
   }
 
@@ -45,7 +45,12 @@ class LedIndicator {
 
   updatePower(){
     var id = Meteor.user()._id+this.led._id;
+    var ledo = Leds.findOne({_id:this.led._id});
     LedsStats.update({_id:id},{$set:{Power:this.ledpower}});
+    if(ledo.isOn && ledo.lastUser == Meteor.user().username){
+      console.log(LedsStats.findOne({_id:id}).Power);
+      Leds.update({_id:this.led._id},{$set:{name: this.led.name,isOn: this.led.isOn,lastUser: Meteor.user().username,Power:LedsStats.findOne({_id:id}).Power}});
+    }
   }
 
 }
