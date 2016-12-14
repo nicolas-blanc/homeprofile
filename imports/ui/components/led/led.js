@@ -35,6 +35,7 @@ class Led {
   reset() {
     this.led = {};
   }
+  
 }
 
 const name = 'led';

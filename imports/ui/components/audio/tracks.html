@@ -1,5 +1,8 @@
-<h1>Best musics: <input ng-model="collapse2" type="checkbox" checked></h1>
+<h1>Best musics: <input ng-model="collapse2" type="checkbox"></h1>
 <div ng-show="collapse2">
-<button ng-click="tracks.play()">Go music!</button>
-<button ng-click="tracks.stop()">Stop music!</button>
+<ul ng-show="tracks.currentUser()">
+  <li ng-repeat="track in tracks.alltracks"> 
+    <track track="track"></track>
+  </li>
+</ul>
 </div>

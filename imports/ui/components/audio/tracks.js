@@ -2,9 +2,9 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tracks.html';
-import { AudioTracks } from '../../../api/tracks';
-import { name as LedIndicator} from '../led/ledIndicator';
+import { AudioTracks } from '../../../api/audiotracks';
 import { Howl } from 'meteor/bojicas:howler2';
+import { name as Track} from './track';
 
 class Tracks {
   constructor($scope, $reactive) {
@@ -12,24 +12,16 @@ class Tracks {
 
     $reactive(this).attach($scope);
 
-    this.sound = new Howl({
-      src: ['/audio/bleach.mp3']
-    });
+    this.currentUser=function() {
+      return Meteor.user() != null;
+    }
 
     this.helpers({
-
+      alltracks() {
+        return AudioTracks.find({});
+      }
     });
   }
-
-play() {
-    console.log("Play!");
-    this.sound.play();
-  }
-stop() {
-  console.log("Stop!");
-  this.sound.stop();
-}
-
 }
 
 const name = 'tracks';
@@ -37,7 +29,7 @@ const name = 'tracks';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  LedIndicator
+  Track
 ]).component(name, {
   template,
   controllerAs: name,
